@@ -39,12 +39,12 @@ export const deleteCategory = async (id) => {
 
 // Transactions API
 export const getTransactions = async () => {
-  const response = await fetch(`${API_BASE_URL}/api/transactions`);
+  const response = await fetch(`${API_BASE_URL}/transactions`);
   return response.json();
 };
 
 export const createTransaction = async (transactionData) => {
-  const response = await fetch(`${API_BASE_URL}/api/transactions`, {
+  const response = await fetch(`${API_BASE_URL}/transactions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(transactionData),
@@ -53,7 +53,7 @@ export const createTransaction = async (transactionData) => {
 };
 
 export const updateTransaction = async (id, transactionData) => {
-  const response = await fetch(`${API_BASE_URL}/api/transactions/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/transactions/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(transactionData),
@@ -62,7 +62,7 @@ export const updateTransaction = async (id, transactionData) => {
 };
 
 export const deleteTransaction = async (id) => {
-  const response = await fetch(`${API_BASE_URL}/api/transactions/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/transactions/${id}`, {
     method: 'DELETE',
   });
   return response.json();
