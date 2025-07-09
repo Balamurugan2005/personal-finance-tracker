@@ -1,69 +1,41 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-// Dashboard API
-export const getDashboardSummary = async () => {
-  const response = await fetch(`${API_BASE_URL}/dashboard/summary`);
-  return response.json();
-};
-
-// Categories API
-export const getCategories = async () => {
-  const response = await fetch(`${API_BASE_URL}/categories`);
-  return response.json();
-};
-
-export const createCategory = async (categoryData) => {
-  const response = await fetch(`${API_BASE_URL}/categories`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(categoryData),
-  });
-  return response.json();
-};
-
-export const updateCategory = async (id, categoryData) => {
-  const response = await fetch(`${API_BASE_URL}/categories/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(categoryData),
-  });
-  return response.json();
-};
-
-export const deleteCategory = async (id) => {
-  const response = await fetch(`${API_BASE_URL}/categories/${id}`, {
-    method: 'DELETE',
-  });
-  return response.json();
-};
-
-// Transactions API
 export const getTransactions = async () => {
-  const response = await fetch(`${API_BASE_URL}/transactions`);
-  return response.json();
+  const res = await fetch(`${BASE_URL}/api/transactions`);
+  if (!res.ok) throw new Error("Failed to fetch transactions");
+  return await res.json();
 };
 
-export const createTransaction = async (transactionData) => {
-  const response = await fetch(`${API_BASE_URL}/transactions`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(transactionData),
+export const createTransaction = async (data) => {
+  const res = await fetch(`${BASE_URL}/api/transactions`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   });
-  return response.json();
+  if (!res.ok) throw new Error("Failed to create transaction");
+  return await res.json();
 };
 
-export const updateTransaction = async (id, transactionData) => {
-  const response = await fetch(`${API_BASE_URL}/transactions/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(transactionData),
+export const updateTransaction = async (id, data) => {
+  const res = await fetch(`${BASE_URL}/api/transactions/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   });
-  return response.json();
+  if (!res.ok) throw new Error("Failed to update transaction");
+  return await res.json();
 };
 
 export const deleteTransaction = async (id) => {
-  const response = await fetch(`${API_BASE_URL}/transactions/${id}`, {
-    method: 'DELETE',
+  const res = await fetch(`${BASE_URL}/api/transactions/${id}`, {
+    method: "DELETE"
   });
-  return response.json();
-}; 
+  if (!res.ok) throw new Error("Failed to delete transaction");
+  return await res.json();
+};
+
+export const getCategories = async () => {
+  const res = await fetch(`${BASE_URL}/api/categories`);
+  if (!res.ok) throw new Error("Failed to fetch categories");
+  return await res.json();
+};
