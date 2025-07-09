@@ -2,18 +2,18 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api
 
 // Dashboard API
 export const getDashboardSummary = async () => {
-  const response = await fetch(`${API_BASE_URL}/api/dashboard/summary`);
+  const response = await fetch(`${API_BASE_URL}/dashboard/summary`);
   return response.json();
 };
 
 // Categories API
 export const getCategories = async () => {
-  const response = await fetch(`${API_BASE_URL}/api/categories`);
+  const response = await fetch(`${API_BASE_URL}/categories`);
   return response.json();
 };
 
 export const createCategory = async (categoryData) => {
-  const response = await fetch(`${API_BASE_URL}/api/categories`, {
+  const response = await fetch(`${API_BASE_URL}/categories`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(categoryData),
@@ -22,7 +22,7 @@ export const createCategory = async (categoryData) => {
 };
 
 export const updateCategory = async (id, categoryData) => {
-  const response = await fetch(`${API_BASE_URL}/api/categories/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/categories/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(categoryData),
@@ -31,7 +31,7 @@ export const updateCategory = async (id, categoryData) => {
 };
 
 export const deleteCategory = async (id) => {
-  const response = await fetch(`${API_BASE_URL}/api/categories/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/categories/${id}`, {
     method: 'DELETE',
   });
   return response.json();
